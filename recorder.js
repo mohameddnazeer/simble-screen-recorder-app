@@ -41,9 +41,9 @@ function stopRecording() {
   if(!mediaRecorder) return;
 
   mediaRecorder.stop();
-  screenStream.getTracks().forEach(track => track.stop)
+  screenStream.getTracks().forEach(track => track.stop())
 
-  startBtn.disabled = false;
+  startRecord.disabled = false;
   stopRecord.disabled = true;
 
   statusText.textContent = "processing video...";
@@ -54,7 +54,7 @@ function handleStopRecording() {
 
   recordedVideoURL = URL.createObjectURL(videoBlob)
 
-  downloadBtn.disabled = false;
+  downloadRecord.disabled = false;
   statusText.textContent = "Recording finished.";
 }
 
