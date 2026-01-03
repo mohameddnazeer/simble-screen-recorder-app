@@ -36,3 +36,25 @@ async function startRecording() {
     statusText.textContent = "recording canceled";
   }
 }
+
+function stopRecording() {
+  if(!mediaRecorder) return;
+
+  mediaRecorder.stop();
+  screenStream.getTracks().forEach(track => track.stop)
+
+  startBtn.disabled = false;
+  stopRecord.disabled = true;
+
+  statusText.textContent = "processing video...";
+}
+
+function handleStopRecording() {
+  const videoBlob = new Blob(recordedChunks, {type: "video/webm"})
+
+  recordedVideoURL = URL.createObjectURL(videoBlob)
+
+  downloadBtn.disabled = false;
+  statusText.textContent = "Recording finished.";
+}
+
