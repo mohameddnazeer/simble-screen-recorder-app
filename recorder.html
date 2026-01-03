@@ -14,7 +14,10 @@
         <button id="stopBtn" disabled onclick="stopRecording()">Stop Recording</button>
         <button id="downloadBtn" disabled onclick="downloadVideo()">Download Video</button>
 
+        <p id="timer">00:00</p>
         <p id="status">Idle</p>
+        
+        <video id="previewVideo" controls style="display: none;"></video>
     </main>
 
     <script src="recorder.js"></script>
