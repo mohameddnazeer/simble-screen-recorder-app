@@ -58,3 +58,15 @@ function handleStopRecording() {
   statusText.textContent = "Recording finished.";
 }
 
+function downloadVideo() {
+  if (!recordedVideoURL) return;
+
+  const a = document.createElement("a");
+  a.href = recordedVideoURL;
+  a.download = "screen-recording.webm";
+  a.click();
+
+  URL.revokeObjectURL(recordedVideoURL);
+  recordedVideoURL = null;
+  recordedChunks = [];
+}
